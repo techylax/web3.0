@@ -3,8 +3,7 @@ import { SiEthereum } from "react-icons/si";
 import { BsInfoCircle } from "react-icons/bs";
 import { Loader } from ".";
 import {TransactionContext} from '../context/TranscationContext';
-import React, {userContext} from 'react';
-import { useContext } from "react";
+import React, {useContext} from 'react';
 
 const Input = ({ placeholder, name, type, value, handleChange }) => (
   <input
