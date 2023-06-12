@@ -4,18 +4,18 @@ import {contractABI, contractAddress} from  '../utils/constants';
 
 export const TransactionContext = React.createContext();
 
-const { ethereum } = window;
+const {ethereum} = window;
 
 const getEthereumContract = () => {
     const provider = new ethers.providers.Web3Provider(ethereum);
     const signer = provider.getSigner();
-    const transactionsContract = new ethers.Contract(contractAddress, contractABI, signer);
+    const transactionContract = new ethers.Contract(contractAddress, contractABI, signer);
 
     console.log(
         {
             provider,
             signer,
-            transactionsContract
+            transactionContract
         }
 
     );
@@ -23,7 +23,7 @@ const getEthereumContract = () => {
 
 export const TransactionProvider = ({ children }) => {
 
-    const [connectedAccount, setconnectedAccount] = useState(initialState)
+  const [connectedAccount, setConnectedAccount] = useState('');
 
     const checkIfWalletIsConnected = async () =>
     {
@@ -45,9 +45,6 @@ export const TransactionProvider = ({ children }) => {
         {
             console.log(error);
             throw new Error("No ethereum object.")
-
-            throw new Error()
-
         }
     }
 
@@ -61,7 +58,7 @@ export const TransactionProvider = ({ children }) => {
     
 
      return (
-        <TransactionContext.Provider value = {{ connectWallet }}>
+        <TransactionContext.Provider value = {{connectWallet}}>
             {children}
         </TransactionContext.Provider>
     );
